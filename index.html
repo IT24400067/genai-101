@@ -3,13 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Fun Facts Generator</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Mars Facts</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+            animation: gradientBG 15s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        #factContainer {
+            text-align: center;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.5s;
+        }
+
+        #factContainer:hover {
+            transform: scale(1.05);
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            outline: none;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-    <h1>Fun Facts About Me!</h1>
-    <div id="fact-display">Click the button to see a fun fact!</div>
-    <button onclick="generateFact()">Generate Another Fun Fact</button>
-    <script src="script.js"></script>
+    <div id="factContainer">
+        <h1>Mars Facts</h1>
+        <p id="factText">Click the button to learn about Mars!</p>
+        <button id="factButton">Get a Mars Fact</button>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const facts = [
+                "Mars is known as the Red Planet due to its reddish appearance, which is due to iron oxide or rust on its surface.",
+                "Mars has the largest volcano in the solar system, Olympus Mons, which is about 13.6 miles (22 kilometers) high.",
+                "Mars has two moons, Phobos and Deimos, which are thought to be captured asteroids.",
+                "A year on Mars is almost twice as long as a year on Earth, taking about 687 Earth days to orbit the Sun.",
+                "Mars has the largest dust storms in the solar system, which can last for months and cover the entire planet.",
+                "The temperature on Mars can plummet to as low as -195 degrees Fahrenheit (-125 degrees Celsius) during winter at the poles.",
+                "Evidence suggests that Mars once had liquid water and possibly harbored life, with signs of ancient river valleys and lake beds.",
+                "Mars has a very thin atmosphere, composed mostly of carbon dioxide, with traces of nitrogen and argon.",
+                "The first successful mission to Mars was NASA's Mariner 4 in 1965, which took the first close-up photos of the Martian surface.",
+                "Mars is a popular destination for space missions, with multiple rovers and orbiters sent to explore its surface and atmosphere."
+            ];
+
+            const factText = document.getElementById('factText');
+            const factButton = document.getElementById('factButton');
+
+            factButton.addEventListener('click', function() {
+                const randomIndex = Math.floor(Math.random() * facts.length);
+                factText.textContent = facts[randomIndex];
+            });
+        });
+    </script>
 </body>
 </html>
